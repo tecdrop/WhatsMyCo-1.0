@@ -1,0 +1,986 @@
+/* WhatsMyRGB */
+
+
+html {
+	background: #000 url("../img/backgrounds/inflicted.png") top left repeat;
+	font-family: wellfleet, serif;
+    font-size: 1.25em;
+    line-height: 1.5;
+}
+
+html, button, input, select, textarea {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+
+body {
+	background-color: rgb(112, 37, 94);
+	
+	text-align: center;
+}
+
+a {
+	border-bottom: 1px dotted #000;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+	text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 4px;
+    /*margin-bottom: 0.5em;*/
+    padding: 0.2em 0.4em;
+}
+
+
+label {
+    display: inline-block;
+/*    margin-right: 0.5em;
+    text-align: right;*/
+}
+
+
+
+
+
+/*--------------------------------------------------
+	Header
+/*--------------------------------------------------*/
+
+/* Outdated Browser Tagline */
+
+.outdated-browser {
+	background-color: #000;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    padding: 0.3em 0 0.1em 0;
+}
+
+.mod-no-borderradius .outdated-browser,
+.mod-no-boxshadow .outdated-browser,
+.mod-no-canvas .outdated-browser,
+.mod-no-fileinput .outdated-browser,
+.mod-no-filereader .outdated-browser,
+.mod-no-fontface .outdated-browser,
+.mod-no-generatedcontent .outdated-browser,
+.mod-no-js .outdated-browser,
+.mod-no-opacity .outdated-browser,
+.mod-no-placeholder .outdated-browser,
+.mod-no-postmessage .outdated-browser,
+.mod-no-rgba .outdated-browser,
+.mod-no-webworkers .outdated-browser {
+    display: block;
+}
+
+.outdated-browser > div {
+    margin: 0 auto;
+	max-width: 720px;
+	padding: 0 1em;
+}
+
+.outdated-browser a {
+    border: none;
+}
+
+.outdated-browser img {
+    vertical-align: middle;
+}
+
+.outdated-browser .cancel {
+	padding: 0.1em 1em;
+}
+
+/* Exit Naked Buttons */
+
+#exit-naked {
+    border-radius: 0 0 50% 50%;
+    display: none;
+	left: 50%;
+    margin-left: -3.7em;
+    opacity: 0;
+    padding: 0.5em 1em 1em 1em;
+    position: fixed;    
+}
+
+body.naked #exit-naked {
+    opacity: 1;
+    display: inline-block;
+}
+
+/* Sponsor & Social Flags */
+
+.flagbox {
+	display: inline-block;
+	opacity: 0.2;
+	transition: all 1s;
+	vertical-align: top;
+}
+
+.flagbox:hover {
+	opacity: 1;
+}
+
+.flagbox a {
+    border: none;
+}
+
+.flagbox.sponsor {
+	-webkit-filter: grayscale(100%);
+}
+
+.flagbox.sponsor:hover {
+	-webkit-filter: none;
+}
+
+.flagbox.sponsor a {
+	background: url("/img/third/east-tec/east-tec-flag-small.png") top left no-repeat;
+	display: block;
+	height: 50px;
+	width: 103px;
+	
+    /* Image Text Replacement */
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;	
+}
+
+.flagbox.share li {
+	display: inline-block;
+}
+
+@media all and (min-width: 500px) {
+	.flagbox.sponsor {
+		position: absolute;
+		left: 0;
+		margin-top: 0;
+	}
+
+	.flagbox.sponsor a {
+		background: url("/img/third/east-tec/east-tec-flag.png") top left no-repeat;
+		display: block;
+		height: 149px;
+		width: 103px;
+	}
+
+	.flagbox.share {
+		position: absolute;
+		right: 10px;
+	}
+
+	.flagbox.share li {
+		display: block;
+	}	
+}
+
+@media all and (min-width: 800px) {
+	.flagbox-wrap {
+		position: absolute;
+		left: 2%;
+	}
+
+	.flagbox.sponsor {
+		position: static;
+	}
+
+	.flagbox.share {
+		margin: 8px 0 0 10px;
+		position: static;
+	}
+}
+
+@media all and (min-width: 1280px) {
+	.flagbox-wrap {
+		position: absolute;
+		left: 10%;
+	}
+}
+
+/* Logo Header */
+
+header {
+	padding-top: 1em;
+}
+
+.logo {
+	background: url("/img/logo/whatsmyco-logo-dark.png") no-repeat top left;
+	border: none;
+	display: inline-block;
+	height: 112px;
+	width: 200px;
+    
+    /* Image Text Replacement */
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.beta {
+	margin-bottom: -0.5em;
+}
+
+@media all and (min-width: 1280px) {
+	header {
+		padding-top: 2em;
+	}
+}
+
+/*--------------------------------------------------
+	Main Content
+/*--------------------------------------------------*/
+
+main {
+	margin: 0 auto;
+	padding: 0 1em 3em 1em;
+	
+	max-width: 720px;
+}
+
+@media all and (min-width: 720px) {
+	main {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+
+
+h2 {
+	margin: 2em 0 1em 0;
+}
+
+summary {
+    outline: none;
+}
+
+summary h3 {
+    display: inline-block;
+}
+
+details + h2 {
+    margin-top: 1em;
+}
+
+details[open] + h2 {
+    margin-top: 2em;
+}
+
+details[open] h3 {
+    margin-bottom: 0;
+}
+
+
+
+
+/* Naked Mode */
+
+body.naked {
+    overflow: hidden;
+}
+
+body .wrapper {
+	/* transition: opacity 1s ease, visibility 1s ease; */
+    position: relative;
+}
+
+body.naked .wrapper {
+	opacity: 0;
+    visibility: hidden;
+}
+
+
+
+/*--------------------------------------------------
+	User Text Section
+/*--------------------------------------------------*/
+
+/* Heading */
+
+#usertext-section h2 {
+	font-size: 1em;
+	font-weight: normal;
+    margin: 1.5em 0 0 0;
+}
+
+#text-privacy {
+	font-size: 0.7em;
+	margin: 0.3em 1em 2em 0;
+}
+
+/* User Textarea */
+
+#usertext {
+	background: transparent;
+	border: none;
+	border-radius: 8px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 1.4em;
+	/*height: 3em;*/
+	left: 0;
+	overflow: hidden;
+	padding: 20px;
+	resize: none;
+	text-align: center;
+	width: 100%;
+}
+
+#usertext:focus {
+	outline: none;
+}
+
+/*#usertext, .textareaClone {
+    min-height: 1.4em;
+}*/
+
+::-webkit-input-placeholder { 
+    color: rgba(255, 255, 255, 0.2);
+}
+
+::-moz-placeholder { 
+    color: rgba(255, 255, 255, 0.2);
+}
+
+:-ms-input-placeholder { 
+    color: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-resizer { 
+    background-color : rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+/* File Input */
+
+#file-color {
+    display: none;
+}
+
+#file-color .filename {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 700px;
+    overflow: hidden;
+    padding: 0.1em 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#file-upload {
+	position: absolute;
+    left: -9999px;	
+}
+
+/*--------------------------------------------------
+	Color Variants
+/*--------------------------------------------------*/
+
+/* Variant List & Items */
+
+.color-variant-list {
+	margin: 2em auto 1em auto;
+}
+
+.color-variant {
+	border-radius: 8px;
+	padding: 1em;
+	vertical-align: top;
+}
+
+.color-variant:before, .color-variant:after {
+    content: " ";
+    display: table;
+}
+
+.color-variant:after {
+    clear: both;
+}
+
+/* Variant Swatches */
+
+.swatch, .swatch-wrap {
+	border-radius: 50%;
+	float: right;
+	height: 80px;
+	width: 80px;
+}
+
+.swatch {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.color-variant.exact .swatch-wrap {
+	background: url("../img/backgrounds/inflicted.png") repeat top left;
+}
+
+/* Variant captions */
+
+.color-variant figcaption {
+	font-size: 0.9em;
+	text-align: left;
+}
+
+.color-variant mark {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	color: inherit;
+	display: inline-block;
+	margin-top: 0.1em;
+	padding: 0.1em 0.2em;
+}
+
+.color-variant em {
+	font-style: normal;
+}
+
+/* Default startup swatch colors */
+
+.color-variant.exact .swatch {
+	background-color: rgba(112, 37, 94, 0.564706);
+}
+
+.color-variant.base .swatch {
+	background-color: rgb(112, 37, 94);
+}
+
+.color-variant.closest .swatch {
+	background-color: rgb(128, 0, 128);
+}
+
+@media all and (min-width: 400px) {
+	.color-variant figcaption {
+		font-size: 1em;
+	}
+}
+
+@media all and (min-width: 600px) {
+	.color-variant-list {
+		display: table;
+	}
+	
+	.color-variant {
+		display: table-cell;
+		padding: 1em 0;
+		width: 33%;
+	}
+	
+	.swatch, .swatch-wrap {
+		float: none;
+		height: 150px;
+		margin: 0 auto;
+		width: 150px;
+	}
+
+	.color-variant figcaption {
+		padding: 1em 0.5em 0 0.5em;
+		text-align: center;
+	}
+}
+
+@media all and (min-width: 720px) {
+	.swatch, .swatch-wrap {
+		height: 200px;
+		width: 200px;
+	}
+}
+
+/*--------------------------------------------------
+	Share Button, Rgb List, Naked Button
+/*--------------------------------------------------*/
+
+.button.facebook.share-link {
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4F6BBA), color-stop(1, #3D56A2));
+	background-image: -o-linear-gradient(bottom, #4F6BBA 0%, #3D56A2 100%);
+	background-image: -moz-linear-gradient(bottom, #4F6BBA 0%, #3D56A2 100%);
+	background-image: -webkit-linear-gradient(bottom, #4F6BBA 0%, #3D56A2 100%);
+	background-image: -ms-linear-gradient(bottom, #4F6BBA 0%, #3D56A2 100%);
+	background-image: linear-gradient(to bottom, #4F6BBA 0%, #3D56A2 100%);
+	border: 1px solid #254396;	
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-top: 0.5em;
+	opacity: 0.2;
+	padding: 0.2em 0.5em;
+	text-shadow: 0 -2px 0 rgba(0, 0, 0, 0.5);
+	transition: all 1s;
+}
+
+.facebook.share-link:hover {
+	opacity: 1;
+}
+
+.rgb-list {
+	margin: 1em auto;
+	padding: 0;
+}
+
+.rgb-list li {
+	color: rgba(255, 255, 255, 0.8);
+	display: inline-block;
+	border-radius: 50%;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	vertical-align: middle;
+	width: 3em;
+}
+
+.red {
+	background: #FF0000;
+}
+
+.green {
+	background: #00FF00;
+}
+
+.blue {
+	background: #0000FF;
+}
+
+.alpha {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+@media all and (min-width: 720px) {
+	.rgb-list li {
+		margin: 0 0.3em;
+	}
+}
+
+/*--------------------------------------------------
+	Copy/Save Section
+/*--------------------------------------------------*/
+
+#copylist {
+    /* margin-left: -2em; */
+}
+
+#copylist label {
+	width: 30%;
+}
+
+#copylist input {
+	margin-bottom: 0.5em;
+	width: 60%;
+}
+
+#copylist li:last-child input {
+	margin-bottom: 0;
+}
+
+@media all and (min-width: 720px) {
+	#copylist li {
+		display: inline-block;
+	}
+
+	#copylist label {
+		width: 4em;
+	}
+
+	#copylist input {
+		width: 11em;
+	}
+}
+
+/* Download Color Swatch Subsection */
+
+#swatch-canvas {
+	display: none;
+}
+
+.save-swatch-wrap {
+	margin-top: 2em;
+}
+
+#swatch-preview {
+    border-radius: 8px;
+    height: 200px;
+	margin: 0 auto;
+    width: 200px;
+}
+
+.save-swatch-wrap label {
+	width: 5em;
+}
+
+.save-swatch-wrap input {
+	width: 4em;
+}
+
+.save-swatch-wrap input:invalid {
+	background-color: #ff0000;
+	color: #fff;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#swatch-download-link {
+	border: none;
+	display: block;
+	font-size: 0;
+	opacity: 0;
+}
+
+@media all and (min-width: 500px) {
+	.save-swatch-wrap li {
+		display: inline-block;
+		text-align: left;
+		vertical-align: middle;
+		width: 45%;
+	}
+}
+
+/*--------------------------------------------------
+	Extra Section
+/*--------------------------------------------------*/
+
+/* Search */
+
+#extra-search li {
+    display: inline-block;
+    margin: 0.5em 0;
+	width: 45%;
+}
+
+.search-link {
+	display: block;
+	border: none;
+}
+
+.search-link:before {
+	display: block;
+	height: 53px;
+	margin: 0 auto;
+	width: 53px;
+}
+
+.search-link.google:before {
+	content: url("../img/third/search/google.png");
+}
+
+.search-link.bing:before {
+	content: url("../img/third/search/bing.png");
+}
+
+.search-link.facebook:before {
+	content: url("../img/third/search/facebook.png");
+}
+
+.search-link.duckduckgo:before {
+	content: url("../img/third/search/duckduckgo.png");
+}
+
+/* Permalink */
+
+#extra-permalink-wrap {
+	margin-top: -0.5em;
+}
+
+.permalink {
+	background-color: rgba(0, 0, 0, 0.2);
+	border: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-radius: 4px;
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	padding: 0.2em 0.4em;
+	text-overflow: ellipsis;    
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+@media all and (min-width: 500px) {
+	#extra-search li {
+		margin: 0.5em;
+		width: auto;
+	}
+}
+
+/*--------------------------------------------------
+	Info Aside
+/*--------------------------------------------------*/
+
+#info-aside {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 3em 1em;
+}
+
+@media all and (min-width: 720px) {
+	#info-aside {
+		padding: 3em 0;
+	}
+}
+
+#info-aside > div {
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+#info-aside h2:first-child {
+    margin-top: 0;
+}
+
+.crc {
+	text-align: center;
+}
+
+/*--------------------------------------------------
+	Fat Footer
+/*--------------------------------------------------*/
+
+footer > section {
+	padding: 1.5em 1em;
+}
+
+@media all and (min-width: 720px) {
+	footer > section {
+		padding: 1.5em 0;
+	}
+}
+
+#ownacolour {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#copyright {
+    background-color: rgba(0, 0, 0, 0.3);
+	font-size: 0.9em;
+}
+
+footer > section > div {
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+footer h2 {
+    font-size: 1.3em;
+    margin: 0;
+}
+
+/*--------------------------------------------------
+	Overlays
+/*--------------------------------------------------*/
+
+.overlay {
+	background-color: #70255e; /* Default background color if setting the current color as rgba fails  */
+    border: 1em solid rgba(0, 0, 0, 0.1);
+    bottom: 0;
+	display: none;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.opened {
+	display: block !important;
+}
+
+.closed {
+	display: none !important;
+}
+
+.overlay > div {
+    padding: 1em 0.5em;
+	margin: 0 auto;
+	max-width: 720px;
+}
+
+.overlay .logo {
+	display: none;
+}
+
+@media all and (min-width: 720px) {
+	.overlay .logo {
+		display: inline-block;
+	}
+}
+
+.overlay h2 {
+	font-size: 1em;
+    margin: 1.1em 0;
+}
+
+.overlay progress {
+  /* Reset the default appearance */
+  /* -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; */
+	
+	width: 100%;
+}
+
+.overlay .cancel {
+	min-width: 8em;
+	margin-top: 0.31em;
+}
+
+.browser-logos {
+    margin: 2em 0;
+}
+
+.browser-logos a {
+    border: none;
+}
+
+.browser-logos img {
+    max-width: 100%;
+}
+
+.message dt, .message dd {
+    display: inline-block;
+    margin: 0;
+}
+
+.message dt {
+    font-weight: bold;
+}
+
+.modern {
+    margin-top: 2em;
+}
+
+
+/*--------------------------------------------------
+	Various Common Styles
+/*--------------------------------------------------*/
+
+
+/* Buttons */
+
+button, .button {
+	background: rgba(0, 0, 0, 0.5);
+    border: none;
+	border-radius: 4px;
+	color: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+	display: inline-block;
+    line-height: 1.4;
+    outline: none;
+	padding: 0.5em 1em;
+}
+
+/*--------------------------------------------------
+	Text colors based on the current background color
+/*--------------------------------------------------*/
+
+body, #usertext-section h2 {
+	color: #000;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-color, .dark-color #usertext-section h2 {
+	color: #fff;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+a {
+	color: #000;
+	color: rgba(0, 0, 0, 0.5);
+	border-color: #000;
+	border-color: rgba(0, 0, 0, 0.5);
+}
+
+.dark-color a {
+	color: #fff;
+	color: rgba(255, 255, 255, 0.5);
+	border-color: #fff;
+	border-color: rgba(255, 255, 255, 0.5);
+}
+
+h2, h3 {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-color h2, .dark-color h3 {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.dark-color .logo {
+	background-image: url("/img/logo/whatsmyco-logo-light.png");
+}
+
+#usertext {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-color #usertext {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+#text-privacy {
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.dark-color #text-privacy {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+#text-privacy a {
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.dark-color #text-privacy a {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+input {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.swatch {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.dark-color .swatch {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Box shadows */
+
+
+#usertext, .swatch, #swatch-preview, .selected, button, .button, .imagebutton {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);	
+}
+
+
+.mod-no-boxshadow #usertext, .mod-no-boxshadow .swatch, .mod-no-boxshadow #swatch-preview, .mod-no-boxshadow .selected,
+.mod-no-boxshadow button, .mod-no-boxshadow .button, .mod-no-boxshadow .imagebutton {
+	border: 1px solid #fff;
+}
+
+.dark-color #usertext, .dark-color .swatch, .dark-color #swatch-preview, .dark-color .selected,
+.dark-color button, .dark-color .button, .dark-color .imagebutton {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
