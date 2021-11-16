@@ -117,94 +117,6 @@ body.naked #exit-naked {
     display: inline-block;
 }
 
-/* Sponsor & Social Flags */
-
-.flagbox {
-	display: inline-block;
-	opacity: 0.2;
-	transition: all 1s;
-	vertical-align: top;
-}
-
-.flagbox:hover {
-	opacity: 1;
-}
-
-.flagbox a {
-    border: none;
-}
-
-.flagbox.sponsor {
-	-webkit-filter: grayscale(100%);
-}
-
-.flagbox.sponsor:hover {
-	-webkit-filter: none;
-}
-
-.flagbox.sponsor a {
-	background: url("/img/third/east-tec/east-tec-flag-small.png") top left no-repeat;
-	display: block;
-	height: 50px;
-	width: 103px;
-	
-    /* Image Text Replacement */
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;	
-}
-
-.flagbox.share li {
-	display: inline-block;
-}
-
-@media all and (min-width: 500px) {
-	.flagbox.sponsor {
-		position: absolute;
-		left: 0;
-		margin-top: 0;
-	}
-
-	.flagbox.sponsor a {
-		background: url("/img/third/east-tec/east-tec-flag.png") top left no-repeat;
-		display: block;
-		height: 149px;
-		width: 103px;
-	}
-
-	.flagbox.share {
-		position: absolute;
-		right: 10px;
-	}
-
-	.flagbox.share li {
-		display: block;
-	}	
-}
-
-@media all and (min-width: 800px) {
-	.flagbox-wrap {
-		position: absolute;
-		left: 2%;
-	}
-
-	.flagbox.sponsor {
-		position: static;
-	}
-
-	.flagbox.share {
-		margin: 8px 0 0 10px;
-		position: static;
-	}
-}
-
-@media all and (min-width: 1280px) {
-	.flagbox-wrap {
-		position: absolute;
-		left: 10%;
-	}
-}
-
 /* Logo Header */
 
 header {
@@ -763,10 +675,6 @@ footer > section {
 	}
 }
 
-#ownacolour {
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
 #copyright {
     background-color: rgba(0, 0, 0, 0.3);
 	font-size: 0.9em;
@@ -828,11 +736,6 @@ footer h2 {
 }
 
 .overlay progress {
-  /* Reset the default appearance */
-  /* -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; */
-	
 	width: 100%;
 }
 
